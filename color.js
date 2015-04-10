@@ -28,41 +28,45 @@ function onDraw() {
   var colors = [
     //['#ffffff','#fedb00','#ff0000','#000000'],
     //['#000000','#ff0000','#fedb00','#ffffff'],
-    //['#ffffe0','#ff4122','#ff1d84','#8b0000'],
-    ['#ffffe0','#3f9583','#000086'],
+    ['#ffffe0','#ff4122','#ff1d84','#8b0000'],
+    //['#FF0038','#3C13E8','#00FFFE','#59E80C','#CF9700','#FF0038'],
+    //['#ffffe0','#3f9583','#000086'],
     //['#0c2c84','#ffffcc'],
     //['#005a32','#ffffcc'],
     //['#7a0177','#ffffcc'],
   ]
 
   color = new ColorCharm();
-  //var colorSeriesRGB = color.linear(colors,colorSegments,'rgb').toRGB();
-  //var colorSeriesHSV = color.linear(colors,colorSegments,'hsv').toRGB();
-  //var colorSeriesHSL = color.linear(colors,colorSegments,'hsl').toRGB();
+
+  console.log(color.linear(colors,colorSegments,'rgb').toHex())
+
+  var colorSeriesRGB = color.linear(colors,colorSegments,'rgb').toRGB();
+  var colorSeriesHSV = color.linear(colors,colorSegments,'hsv').toRGB();
+  var colorSeriesHSL = color.linear(colors,colorSegments,'hsl').toRGB();
   var colorSeriesHCL = color.linear(colors,colorSegments,'hcl').toRGB();
 
-  //var colorSeriesRGBbezier = color.bezier(colors,colorSegments,'rgb').toRGB();
-  //var colorSeriesHSVbezier = color.bezier(colors,colorSegments,'hsv').toRGB();
-  //var colorSeriesHSLbezier = color.bezier(colors,colorSegments,'hsl').toRGB();
+  var colorSeriesRGBbezier = color.bezier(colors,colorSegments,'rgb').toRGB();
+  var colorSeriesHSVbezier = color.bezier(colors,colorSegments,'hsv').toRGB();
+  var colorSeriesHSLbezier = color.bezier(colors,colorSegments,'hsl').toRGB();
   var colorSeriesHCLbezier = color.bezier(colors,colorSegments,'hcl').toRGB();
 
-  //createGradient(color,colorSeriesRGB, container);
-  //createGradient(color,colorSeriesHSV, container);
-  //createGradient(color,colorSeriesHSL, container);
+  createGradient(color,colorSeriesRGB, container);
+  createGradient(color,colorSeriesHSV, container);
+  createGradient(color,colorSeriesHSL, container);
   createGradient(color,colorSeriesHCL, container);
 
-  //createGradient(color,colorSeriesRGBbezier, container);
-  //createGradient(color,colorSeriesHSVbezier, container);
-  //createGradient(color,colorSeriesHSLbezier, container);
+  createGradient(color,colorSeriesRGBbezier, container);
+  createGradient(color,colorSeriesHSVbezier, container);
+  createGradient(color,colorSeriesHSLbezier, container);
   createGradient(color,colorSeriesHCLbezier, container);
 
-  //var colorPlot = color.bezier(colors,colorSegments,'hcl').generalize();
-  //for (var i = 0; i < colorPlot.length; i++) {
-  //  items0.push({x:startTime + i*1e5,y:colorPlot[i][0]})
-  //  items1.push({x:startTime + i*1e5,y:colorPlot[i][1]})
-  //  items2.push({x:startTime + i*1e5,y:colorPlot[i][2]})
-  //}
-  //drawGraphs();
+  var colorPlot = color.bezier(colors,colorSegments,'hcl').generalize();
+  for (var i = 0; i < colorPlot.length; i++) {
+    items0.push({x:startTime + i*1e5,y:colorPlot[i][0]})
+    items1.push({x:startTime + i*1e5,y:colorPlot[i][1]})
+    items2.push({x:startTime + i*1e5,y:colorPlot[i][2]})
+  }
+  drawGraphs();
 }
 
 function createGradient(color, colorSeries, container) {

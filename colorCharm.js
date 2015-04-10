@@ -186,6 +186,13 @@ ColorCharm.prototype.toRGB = function() {
   return resultList;
 }
 
+ColorCharm.prototype.toHex = function() {
+  var me = this;
+  var rgb = this.toRGB();
+  var resultList = rgb.map(function (rgb) {return me.convert.rgb2hex(rgb)})
+  return resultList;
+}
+
 
 ColorCharm.prototype.generalize = function() {
   return this._generalize(this.colorList);
