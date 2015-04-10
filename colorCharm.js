@@ -135,7 +135,7 @@ ColorCharm.prototype._preparePoints = function(points,colorSpace) {
       return preparedPoints;
     }
   }
-}
+};
 
 ColorCharm.prototype.linear = function(colors,colorSegments,colorSpace) {
   return this._interpolate(colors,colorSegments,colorSpace.toUpperCase(),'linear');
@@ -161,7 +161,7 @@ ColorCharm.prototype._interpolate = function(colors,colorSegments,colorSpace,met
   this.colorList = this._degeneralize(generalizedColorList, colorSpace);
   this.colorSpace = colorSpace;
   return this;
-}
+};
 
 ColorCharm.prototype.toRGB = function() {
   var generalizedColorList = this._generalize(this.colorList);
@@ -182,24 +182,24 @@ ColorCharm.prototype.toRGB = function() {
       rgbColor = me.convert.hcl2rgb(generalizedColor[0],generalizedColor[1],generalizedColor[2]);
     }
     resultList.push(rgbColor);
-  })
+  });
   return resultList;
-}
+};
 
 ColorCharm.prototype.toHex = function() {
   var me = this;
   var rgb = this.toRGB();
-  var resultList = rgb.map(function (rgb) {return me.convert.rgb2hex(rgb)})
+  var resultList = rgb.map(function (rgb) {return me.convert.rgb2hex(rgb)});
   return resultList;
-}
+};
 
 
 ColorCharm.prototype.generalize = function() {
   return this._generalize(this.colorList);
-}
+};
 ColorCharm.prototype.return = function() {
   return this.colorList;
-}
+};
 
 /**
  * returns an array of RGB colors, linear interpolated
@@ -241,7 +241,7 @@ ColorCharm.prototype.boundColor = function(color, colorSpace) {
       return {0: hue, 1: color[1], 2: color[2]};
     }
   }
-}
+};
 
 ColorCharm.prototype.interpolation.bezier = function(points,colorSegments, colorSpace) {
   var colors = [];
@@ -560,7 +560,7 @@ ColorCharm.prototype.convert.hsl2rgb = function(h, s, l){
   }
 
   return {r:Math.round(r * 255), g: Math.round(g * 255), b : Math.round(b * 255)};
-}
+};
 
 
 /**
@@ -604,4 +604,4 @@ ColorCharm.prototype.convert.rgb2hsl = function(r, g, b){
 
   h *= 360;
   return {h:h, s:s, l:l};
-}
+};
